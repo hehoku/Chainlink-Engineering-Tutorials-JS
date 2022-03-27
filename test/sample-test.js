@@ -1,17 +1,15 @@
 const { expect } = require('chai')
 const { ethers } = require('hardhat')
 
-describe('SimpleStorage Test', function () {
-  it("Should return the new greeting once it's changed", async function () {
-    const SimpleStorage = await ethers.getContractFactory('SimpleStorage')
-    const contract = await SimpleStorage.deploy()
-    await contract.deployed()
+describe('Lottery contract entranceFee', function () {
+  it('it should return entranceFee', async function () {
+    const [owner] = await ethers.getSigners()
 
-    const setNumberTx = await contract.store(312)
+    const LotteryContract = await ethers.getContractFactory('Lottery')
 
-    // wait until the transaction is mined
-    await setNumberTx.wait()
+    const contract = await LotteryContract.deploy()
 
-    expect(await contract.retrieve()).to.equal(0)
+    const entranceFee = await contract.getEntranceFee()
+    console.log(entranceFee)
   })
 })

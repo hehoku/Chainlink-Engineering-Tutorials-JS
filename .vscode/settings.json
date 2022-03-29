@@ -1,6 +1,6 @@
 {
   "solidity.defaultCompiler": "remote",
-  "solidity.compileUsingRemoteVersion": "v0.6.6+commit.6c089d02",
+  "solidity.compileUsingRemoteVersion": "v0.8.0+commit.c7dfd78e",
   "cSpell.words": [
     "smartcontractkit"
   ]

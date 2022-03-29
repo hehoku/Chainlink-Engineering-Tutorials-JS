@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.6.6;
+pragma solidity ^0.8.0;
 
 interface governance_interface {
   function lottery() external view returns (address);

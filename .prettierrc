@@ -12,12 +12,6 @@
         "explicitTypes": "always"
       }
     },
-    {
-      "files": "*.js",
-      "options": {
-        "singleQuote": true,
-        "semi": false
-      }
-    }
+    { "files": "*.js", "options": { "singleQuote": true, "semi": false } }
   ]
 }

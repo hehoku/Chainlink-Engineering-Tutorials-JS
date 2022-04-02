@@ -5,28 +5,25 @@
 // Runtime Environment's members available in the global scope.
 const hre = require('hardhat')
 
-async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+async function main () {
+  const LotteryContract = await hre.ethers.getContractFactory('Lottery')
 
-  // We get the contract to deploy
-  const SimpleStorage = await hre.ethers.getContractFactory('SimpleStorage')
-  const simpleStorage = await SimpleStorage.deploy()
+  const contract = await LotteryContract.deploy(
+    '0x8c7382f9d8f56b33781fe506e897a4f1e2d17255',
+    '0x326c977e6efc84e512bb9c30f76e30c160ed06fb',
+    100000000000000,
+    '0x6e75b569a01ef56d18cab6a8e71e6600d6ce853834d4a5748b720d06f878b3a4'
+  )
 
-  await simpleStorage.deployed()
+  await contract.deployed()
 
-  console.log('SimpleStorage deployed to:', simpleStorage.address)
+  console.log('🤖 Lottery contract deployed to:', contract.address)
+  // 0xa8a7a9167c62a49bf9a926c75c41779200d1edc7
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main()
   .then(() => process.exit(0))
-  .catch((error) => {
+  .catch(error => {
     console.error(error)
     process.exit(1)
   })
